@@ -1,51 +1,27 @@
 <?php
 
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="da">
 <head>
-    <title>User Login</title>
-    <link href="./view/css/style.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<div>
-    <form action="login-action.php" method="post" id="frmLogin" onSubmit="return validate();">
-        <div class="demo-table">
+    <meta charset="utf-8">
 
-            <div class="form-head">Login</div>
-            <?php
-            if(isset($_SESSION["errorMessage"])) {
-                ?>
-                <div class="error-message"><?php  echo $_SESSION["errorMessage"]; ?></div>
-                <?php
-                unset($_SESSION["errorMessage"]);
-            }
-            ?>
-            <div class="field-column">
-                <div>
-                    <label for="username">Username</label><span id="user_info" class="error-info"></span>
-                </div>
-                <div>
-                    <input name="user_name" id="user_name" type="text"
-                           class="demo-input-box">
-                </div>
-            </div>
-            <div class="field-column">
-                <div>
-                    <label for="password">Password</label><span id="password_info" class="error-info"></span>
-                </div>
-                <div>
-                    <input name="password" id="password" type="password"
-                           class="demo-input-box">
-                </div>
-            </div>
-            <div class=field-column>
-                <div>
-                    <input type="submit" name="login" value="Login"
-                           class="btnLogin"></span>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+    <title>Sigende titel</title>
+
+    <meta name="robots" content="All">
+    <meta name="author" content="Udgiver">
+    <meta name="copyright" content="Information om copyright">
+
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+

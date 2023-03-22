@@ -1,15 +1,16 @@
-</html>
 <html>
 <head>
     <title>User Login</title>
-    <link href="./view/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"  crossorigin="anonymous">
+    <link href="src/css/style.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
-<div>
+<div class="d-flex justify-content-center align-items-center h-100">
     <form action="login-action.php" method="post" id="frmLogin" onSubmit="return validate();">
         <div class="demo-table">
 
-            <div class="form-head">Login</div>
+            <div class="form-head text-primary">Login</div>
             <?php
             if(isset($_SESSION["errorMessage"])) {
                 ?>
@@ -39,11 +40,15 @@
             <div class=field-column>
                 <div>
                     <input type="submit" name="login" value="Login"
-                           class="btnLogin"></span>
+                           class="btnLogin btn-primar"></span>
                 </div>
             </div>
         </div>
     </form>
 </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

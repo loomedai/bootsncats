@@ -1,0 +1,14 @@
+.test{
+    color: red;
+}
+
+.microMessage{
+    display: block;
+    background-color: coral;
+    padding: 1.5rem 1rem;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+
+}

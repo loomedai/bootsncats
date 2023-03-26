@@ -2,7 +2,7 @@
   "name": "bootsncats",
   "version": "1.0.0",
   "description": "",
-  "main": "index.php",
+  "main": "login.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

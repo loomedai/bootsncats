@@ -3,8 +3,8 @@
 @include 'config.php';
 
 if(isset($_POST["add_book"])) {
-    $book_title = $_POST['book_title'];
-    $book_text = $_POST['book_text'];
+    $book_title = addslashes($_POST['book_title']);
+    $book_text = addslashes($_POST['book_text']);
     $book_price = $_POST['book_price'];
     $book_image = $_FILES['book_image']['name'];
     $book_image_tmp_name = $_FILES['book_image']['tmp_name'];
@@ -14,6 +14,8 @@ if(isset($_POST["add_book"])) {
         $message[] = "All fields required";
     }else{
         $insert = "INSERT INTO books(title, img, Description, Price) VALUES('$book_title','$book_image','$book_text','$book_price')";
+
+        echo $insert;
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         $upload = mysqli_query($connect, $insert);
         if($upload){

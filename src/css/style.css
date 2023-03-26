@@ -12,3 +12,39 @@
     text-align: center;
 
 }
+
+.bookPanel{
+    margin: 2rem 0;
+
+
+}
+
+.bookPanel .bookPanel-table{
+    width: 100%;
+    text-align: center;
+    justify-content: space-around;
+
+}
+
+.bookPanel .bookPanel-table thead{
+    background-color: lightgreen;
+
+}
+
+.bookPanel .bookPanel-table th{
+    padding: 1rem;
+    font-size: 2rem;
+
+
+}
+
+.bookPanel .bookPanel-table tr{
+    padding: 1rem;
+    font-size: 1rem;
+    border-bottom:solid 1px forestgreen ;
+
+}
+
+.kr{
+    display: inline;
+}

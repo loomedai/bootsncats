@@ -63,6 +63,40 @@ if(isset($message)){
 
 </div>
 
+<?php
+
+    $select = mysqli_query($connect, "SELECT * FROM books");
+?>
+
+<div class="bookPanel">
+    <table class="bookPanel-table">
+        <thead>
+            <tr>
+                <th>Cover Image</th>
+                <th>Book Title</th>
+                <th>Price</th>
+                <th colspan="2">Update</th>
+            </tr>
+        </thead>
+
+        <?php
+    while($row = mysqli_fetch_assoc($select)){
+
+        ?>
+
+        <tr>
+            <td><img src="uploads/<?php echo $row['img']; ?>" height="100px"></td>
+            <td><?php echo $row['Title']; ?> </td>
+            <td><?php echo $row['Price']; ?><p class="kr"> kr.</p></td>
+            <td>
+                <a href="update.php?edit=<?php echo $row['Bid']; ?>"> <i class="fas fa-edit"></i> Edit</a>
+            </td>
+        </tr>
+        <?php
+    };
+        ?>
+    </table>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

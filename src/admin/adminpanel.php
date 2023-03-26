@@ -16,7 +16,7 @@ if(isset($_POST["add_book"])) {
         $insert = "INSERT INTO books(title, img, Description, Price) VALUES('$book_title','$book_image','$book_text','$book_price')";
 
         echo $insert;
-        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+      //  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         $upload = mysqli_query($connect, $insert);
         if($upload){
             move_uploaded_file($book_image_tmp_name,$book_image_folder);
@@ -26,8 +26,14 @@ if(isset($_POST["add_book"])) {
         }
     }
 
-
 }
+
+if(isset($_GET['delete']) && is_numeric($_GET['delete'])){
+    $Bid = filter_var($_GET['delete'], FILTER_SANITIZE_NUMBER_INT);
+    $Bid = intval($Bid);
+    mysqli_query($connect, "DELETE FROM books WHERE Bid = $Bid");
+    header('location:adminpanel.php');
+};
 
 ?>
 <html lang="en">
@@ -89,7 +95,8 @@ if(isset($message)){
             <td><?php echo $row['Title']; ?> </td>
             <td><?php echo $row['Price']; ?><p class="kr"> kr.</p></td>
             <td>
-                <a href="update.php?edit=<?php echo $row['Bid']; ?>"> <i class="fas fa-edit"></i> Edit</a>
+                <a href="update.php?edit=<?php echo $row['Bid']; ?>" class="btn bg-success text-white"> </i> Edit</a>
+                <a href="adminpanel.php?delete=<?php echo $row['Bid']; ?>" class="btn bg-danger text-white"> </i> Delete</a>
             </td>
         </tr>
         <?php

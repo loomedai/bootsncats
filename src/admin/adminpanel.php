@@ -35,6 +35,8 @@ if(isset($_GET['delete']) && is_numeric($_GET['delete'])){
     header('location:adminpanel.php');
 };
 
+
+
 ?>
 <html lang="en">
 <head>
@@ -63,7 +65,7 @@ if(isset($message)){
             <input type="text" placeholder="enter book description" name="book_text" class="box">
             <input type="" placeholder="enter book price" name="book_price" class="box">
             <input type="file" accept="image/png, image/jpeg, image/jpg, image/gif" name="book_image" class="box">
-            <input type="submit" class="btn" name="add_book" value="add book">
+            <input type="submit" class="btn bg-success text-white" name="add_book" value="add book">
         </form>
     </div>
 

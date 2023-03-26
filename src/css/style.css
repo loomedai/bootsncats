@@ -48,3 +48,10 @@
 .kr{
     display: inline;
 }
+
+admin-product-form-container .centered{
+    display: flex;
+    align-items:center ;
+    justify-content: center;
+    min
+}

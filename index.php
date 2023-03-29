@@ -1,7 +1,8 @@
 <?php
+require_once 'class/booksDb.php';
 
-include_once "bookclass.php";
-
+$bookshop = new booksDb(); // Create an instance of the Bookshop class
+$books = $bookshop->getBooks(); // Call the getBooks() method to retrieve data
 ?>
 
 <!doctype html>
@@ -27,22 +28,31 @@ include_once "bookclass.php";
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">All books</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Pricing</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
+
         </ul>
     </div>
 </nav>
 
-<?php
+<div class="book-container">
+    <?php foreach ($books as $book): ?>
+        <div class="card">
+            <img src="<?php echo $book['img']; ?>" alt="">
+            <div class="">
+                <h5 class="bookTitle"><?php echo $book['Title']; ?></h5>
+                <p class="bookDesc"><?php echo $book['Description']; ?></p>
+                <p class="bookPrice"><?php echo $book['Price']; ?></p>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
 
-    //foreach(){};
-?>
+
+
 
 <div class="book-container">
 

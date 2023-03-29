@@ -18,10 +18,18 @@ class booksDb{
     }
 
     public function getBooks() {
-        $stmt = $this->conn->prepare("SELECT * FROM books");
-        $stmt->execute();
-        $result = $stmt->fetchAll();
+        $sqlStatment = $this->conn->prepare("SELECT * FROM books");
+        $sqlStatment->execute();
+        $result = $sqlStatment->fetchAll();
         return $result;
+    }
+
+    public function getLastBooks() {
+        $sqlStatment = $this->conn->prepare("SELECT * FROM books ORDER BY id DESC LIMIT 12");
+        $sqlStatment->execute();
+        $result = $sqlStatment->fetchAll();
+        return $result;
+
     }
 
 }

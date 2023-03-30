@@ -38,17 +38,29 @@ $books = $bookshop->getBooks(); // Call the getBooks() method to retrieve data
     </div>
 </nav>
 
-<div class="book-container">
+<div class="book-container" style="margin-outside: 300px">
+    <?php $i = 0; ?>
     <?php foreach ($books as $book): ?>
-        <div class="card">
-            <img src="<?php echo $book['img']; ?>" alt="">
-            <div class="">
-                <h5 class="bookTitle"><?php echo $book['Title']; ?></h5>
-                <p class="bookDesc"><?php echo $book['Description']; ?></p>
-                <p class="bookPrice"><?php echo $book['Price']; ?></p>
-            </div>
+    <?php if($i % 4 == 0): ?>
+    <?php if($i != 0): ?>
+</div>
+<?php endif; ?>
+<div class="row mt-3" >
+    <?php endif; ?>
+    <div class="card col-sm-3 px-2">
+        <img src="<?php echo $book['imgPath']; ?>" alt="">
+        <div class="">
+            <h5 class="bookTitle"><?php echo $book['Title']; ?></h5>
+            <p class="bookDesc"><?php echo $book['Description']; ?></p>
+            <p class="bookPrice"><?php echo $book['Price']; ?></p>
         </div>
+    </div>
+    <?php $i++; ?>
     <?php endforeach; ?>
+    <?php if($i % 4 != 0): ?>
+        <?php echo str_repeat('<div class="card col-sm-3"></div>', 4 - ($i % 4)); ?>
+    <?php endif; ?>
+</div>
 </div>
 
 

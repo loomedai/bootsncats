@@ -13,10 +13,12 @@
 
 }
 
+.book-container{
+    margin:300px;
+}
+
 .bookPanel{
     margin: 2rem 0;
-
-
 }
 
 .bookPanel .bookPanel-table{

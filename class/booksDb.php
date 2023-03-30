@@ -21,7 +21,12 @@ class booksDb{
         $sqlStatment = $this->conn->prepare("SELECT * FROM books");
         $sqlStatment->execute();
         $result = $sqlStatment->fetchAll();
-        return $result;
+        $books = array();
+        foreach ($result as $book) {
+            $book['imgPath'] = 'src/admin/uploads/' . $book['img'];
+            $books[] = $book;
+        }
+        return $books;
     }
 
     public function getLastBooks() {

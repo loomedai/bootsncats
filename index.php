@@ -17,22 +17,23 @@ $books = $bookshop->getBooks(); // Call the getBooks() method to retrieve data
     <title>Document</title>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg bg-success text-white">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand text-white" href="#">The Booktique</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link text-white" href="#">Features</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link text-white" href="#">Pricing</a>
                 </li>
             </ul>
         </div>
@@ -55,7 +56,7 @@ $books = $bookshop->getBooks(); // Call the getBooks() method to retrieve data
             <p class="bookDesc h-50 overflow-hidden"><?php echo $book['Description']; ?></p>
            <div class="buy d-flex justify-content-between">
                <p class="bookPrice position-absolute bottom-0 start-0 p-1 m-1"><?php echo $book['Price']; ?></p>
-               <a href="" class="btn position-absolute bottom-0 end-0 bg-success p-1 m-1">Add to cart</a>
+               <a href="" class="btn position-absolute bottom-0 end-0 bg-success p-1 m-1 text-white">Add to cart</a>
            </div>
         </div>
     </div>

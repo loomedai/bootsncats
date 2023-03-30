@@ -2,6 +2,15 @@
     color: red;
 }
 
+p{
+    margin:0;
+}
+
+.btn{
+    margin:0;
+    padding: 0;
+}
+
 .microMessage{
     display: block;
     background-color: coral;
@@ -14,7 +23,7 @@
 }
 
 .book-container{
-    margin:300px;
+    margin:100px;
 }
 
 .bookPanel{
@@ -55,5 +64,4 @@ admin-product-form-container .centered{
     display: flex;
     align-items:center ;
     justify-content: center;
-    min
 }

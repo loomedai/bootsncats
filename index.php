@@ -17,48 +17,52 @@ $books = $bookshop->getBooks(); // Call the getBooks() method to retrieve data
     <title>Document</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">All books</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
-
-        </ul>
+<nav class="navbar navbar-expand-lg bg-success text-white">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
-<div class="book-container" style="margin-outside: 300px">
+<div class="book-container">
     <?php $i = 0; ?>
     <?php foreach ($books as $book): ?>
-    <?php if($i % 4 == 0): ?>
+    <?php if($i % 5== 0): ?>
     <?php if($i != 0): ?>
 </div>
 <?php endif; ?>
-<div class="row mt-3" >
+<div class="row justify-content-between" >
     <?php endif; ?>
-    <div class="card col-sm-3 px-2">
+    <div class="card col-sm-2 px-2 m-1">
         <img src="<?php echo $book['imgPath']; ?>" alt="">
-        <div class="">
+        <div class="book-info" style="height: 14em;">
             <h5 class="bookTitle"><?php echo $book['Title']; ?></h5>
-            <p class="bookDesc"><?php echo $book['Description']; ?></p>
-            <p class="bookPrice"><?php echo $book['Price']; ?></p>
+            <p class="bookDesc h-50 overflow-hidden"><?php echo $book['Description']; ?></p>
+           <div class="buy d-flex justify-content-between">
+               <p class="bookPrice position-absolute bottom-0 start-0 p-1 m-1"><?php echo $book['Price']; ?></p>
+               <a href="" class="btn position-absolute bottom-0 end-0 bg-success p-1 m-1">Add to cart</a>
+           </div>
         </div>
     </div>
     <?php $i++; ?>
     <?php endforeach; ?>
-    <?php if($i % 4 != 0): ?>
-        <?php echo str_repeat('<div class="card col-sm-3"></div>', 4 - ($i % 4)); ?>
+    <?php if($i % 5 != 0): ?>
+        <?php echo str_repeat('<div class="card col-sm-2"></div>', 4 - ($i % 4)); ?>
     <?php endif; ?>
 </div>
 </div>

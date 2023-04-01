@@ -65,9 +65,11 @@ if(isset($_POST["add_to_cart"])){
                     <a class="nav-link active text-white" aria-current="page" href="/">Books</a>
                 </li>
                 <li class="nav-item end-0">
+                    <a class="nav-link text-white" href="login-session/form.php">Login</a>
+                </li>
+                <li class="nav-item end-0">
                     <a class="nav-link text-white" href="cart.php">Cart</a>
                 </li>
-
             </ul>
         </div>
     </div>

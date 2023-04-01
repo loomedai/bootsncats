@@ -24,7 +24,7 @@ if(isset($_POST["add_to_cart"])){
             $_SESSION["shopping_cart"][$count] = $book_array;
         }else{
             echo '<script>Alert("Item Already Added")</script>';
-            echo '<script>window.location="index.php"</script>';
+            echo '<script>window.location="login-form.php"</script>';
         }
 
     }else{

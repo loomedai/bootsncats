@@ -10,4 +10,4 @@ if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 }else {
     $_SESSION['message'] = "Your username or password is incorrect";
 }
-header("Location: index.php");
+header("Location: form.php");

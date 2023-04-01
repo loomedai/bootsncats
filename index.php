@@ -61,8 +61,15 @@ if(isset($_POST["add_to_cart"])){
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="/">Books</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownBooks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Books
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownBooks">
+                        <li><a class="dropdown-item" href="#">Mystery</a></li>
+                        <li><a class="dropdown-item" href="#">Romance</a></li>
+                        <li><a class="dropdown-item" href="#">Science Fiction</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item end-0">
                     <a class="nav-link text-white" href="login-session/form.php">Login</a>
@@ -74,6 +81,7 @@ if(isset($_POST["add_to_cart"])){
         </div>
     </div>
 </nav>
+
 
 <div class="book-container">
     <?php $i = 0; ?>

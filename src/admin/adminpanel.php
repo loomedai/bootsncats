@@ -23,7 +23,6 @@ if(isset($_POST["add_book"])) {
     }else{
         $insert = "INSERT INTO books(title, img, Description, Price) VALUES('$book_title','$book_image','$book_text','$book_price')";
 
-        echo $insert;
       //  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         $upload = mysqli_query($connect, $insert);
         if($upload){
@@ -58,17 +57,24 @@ if(isset($_GET['delete']) && is_numeric($_GET['delete'])){
 
 <nav class="navbar navbar-expand-lg bg-success text-white">
     <div class="container-fluid">
-        <a class="navbar-brand text-white" href="#">The Booktique</a>
+        <a class="navbar-brand text-white" href="../../index.php">The Booktique</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="index.php">Books</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownBooks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Books
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownBooks">
+                        <li><a class="dropdown-item" href="#">Mystery</a></li>
+                        <li><a class="dropdown-item" href="#">Romance</a></li>
+                        <li><a class="dropdown-item" href="#">Science Fiction</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item end-0">
-                    <a class="nav-link text-white" href="../../login-session/form.php">Login</a>
+                    <a class="nav-link text-white" href="login-session/form.php">Login</a>
                 </li>
                 <li class="nav-item end-0">
                     <a class="nav-link text-white" href="cart.php">Cart</a>

@@ -5,19 +5,31 @@ session_start();
 <head>
     <title>Login</title>
 </head>
-    <body>
-    <form action="form.php" method="post">
+<body>
+<?php
+if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+    echo '<p>You are logged in as an admin. <a href="../src/admin/adminpanel.php">Go to admin panel</a></p>';
+} else {
+    // Show login form
+    ?>
+    <form action="login-secure.php" method="post">
         <fieldset>
             <legend>Login</legend>
-            <input type="text" name="user-name" placeholder="User Name">
+            <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
             <button type="submit">Login</button>
         </fieldset>
     </form>
-    
+
     <?php
-    if(isset($_SESSION['message'])) echo $_SESSION['message'];
+    if (isset($_SESSION['message'])) {
+        echo '<p>' . $_SESSION['message'] . '</p>';
+        unset($_SESSION['message']);
+    }
     ?>
+    <?php
+}
+?>
     
     <form action="signup.php" method="post">
         <fieldset>

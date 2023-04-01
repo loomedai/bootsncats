@@ -1,6 +1,14 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['admin'])) {
+    header("Location: ../../login-session/form.php");
+    exit;
+}
 
 @include 'config.php';
+@include '../../login-session/dbhandler.phpp';
+
 
 if(isset($_POST["add_book"])) {
     $book_title = addslashes($_POST['book_title']);
@@ -47,6 +55,28 @@ if(isset($_GET['delete']) && is_numeric($_GET['delete'])){
 
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg bg-success text-white">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#">The Booktique</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="index.php">Books</a>
+                </li>
+                <li class="nav-item end-0">
+                    <a class="nav-link text-white" href="../../login-session/form.php">Login</a>
+                </li>
+                <li class="nav-item end-0">
+                    <a class="nav-link text-white" href="cart.php">Cart</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <?php
 if(isset($message)){

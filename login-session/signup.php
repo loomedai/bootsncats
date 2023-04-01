@@ -2,13 +2,12 @@
 session_start();
 require_once ('dbhandler.php');
 
-$firstName  = $_POST['first-name'];
-$lastName   = $_POST['last-name'];
-$userName   = $_POST['user-name'];
-$email      = $_POST['email'];
-$password   = $_POST['password'];
+$firstName = filter_var($_POST['first-name'], FILTER_SANITIZE_STRING);
+$lastName = filter_var($_POST['last-name'], FILTER_SANITIZE_STRING);
+$userName = filter_var($_POST['user-name'], FILTER_SANITIZE_STRING);
+$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+$password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
-//todo: sanitize the post data
 //check if the form is posted and the form values are not empty then run the code
 if(($_SERVER['REQUEST_METHOD'] == 'POST') && !EmptyFormValue(array($firstName,$lastName,$userName,$email,$password))) {
 

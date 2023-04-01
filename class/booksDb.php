@@ -37,4 +37,16 @@ class booksDb{
 
     }
 
+    public function getBookById($id) {
+        $sqlStatement = $this->conn->prepare("SELECT * FROM books WHERE Bid=:book_id");
+        $sqlStatement->bindParam(':book_id', $book_id);
+        $sqlStatement->execute();
+        $result = $sqlStatement->fetch();
+        if (!$result) {
+            return null;
+        }
+        $result['imgPath'] = 'src/admin/uploads/' . $result['img'];
+        return $result;
+    }
+
 }

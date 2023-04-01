@@ -1,8 +1,43 @@
 <?php
+session_start();
+
 require_once 'class/booksDb.php';
 
 $bookshop = new booksDb(); // Create an instance of the Bookshop class
 $books = $bookshop->getBooks(); // Call the getBooks() method to retrieve data
+
+if(isset($_POST["add_to_cart"])){
+    if(isset($_SESSION["shopping_cart"])){
+
+            print_r($_POST['Bid']);
+
+ /*       $book_array_id = array_column($_SESSION["shopping_cart"],"Bid");
+        if(!in_array($_GET["Bid"], $book_array_id)){
+
+            $count = count($_SESSION["shopping_cart"]);
+            $book_array = array(
+                'Bid' => $_GET["Bid"],
+                'Title' => $_POST["hidden_title"],
+                'Price' => $_POST["hidden_price"],
+                'img' => $_POST["img"],
+            );
+            $_SESSION["shopping_cart"][$count] = $book_array;
+        }else{
+            echo '<script>Alert("Item Already Added")</script>';
+            echo '<script>window.location="index.php"</script>';
+        }
+
+    }else{
+        $book_array = array(
+                'Bid' => $_GET["Bid"],
+                'Title' => $_POST["hidden_title"],
+                'Price' => $_POST["hidden_price"],
+                'img' => $_POST["img"],
+        );
+        $_SESSION["shopping_cart"][0] = $book_array;
+  */  }
+}
+
 ?>
 
 <!doctype html>
@@ -25,16 +60,14 @@ $books = $bookshop->getBooks(); // Call the getBooks() method to retrieve data
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                    <a class="nav-link active text-white" aria-current="page" href="/">Books</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Features</a>
+                <li class="nav-item end-0">
+                    <a class="nav-link text-white" href="cart.php">Cart</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Pricing</a>
-                </li>
+
             </ul>
         </div>
     </div>
@@ -56,7 +89,11 @@ $books = $bookshop->getBooks(); // Call the getBooks() method to retrieve data
             <p class="bookDesc h-50 overflow-hidden"><?php echo $book['Description']; ?></p>
            <div class="buy d-flex justify-content-between">
                <p class="bookPrice position-absolute bottom-0 start-0 p-1 m-1"><?php echo $book['Price']; ?></p>
-               <a href="" class="btn position-absolute bottom-0 end-0 bg-success p-1 m-1 text-white">Add to cart</a>
+               <form method="post" action="cart.php">
+                   <input type="hidden" name="hidden_title" value="<?php echo $book['Title']; ?>">
+                   <input type="hidden" name="hidden_price" value="<?php echo $book['Price']; ?>">
+                   <input type="submit" name="add_to_cart" class="btn position-absolute bottom-0 end-0 bg-success p-1 m-1 text-white" value="Add to cart">
+               </form>
            </div>
         </div>
     </div>
@@ -65,16 +102,10 @@ $books = $bookshop->getBooks(); // Call the getBooks() method to retrieve data
     <?php if($i % 5 != 0): ?>
         <?php echo str_repeat('<div class="card col-sm-2"></div>', 4 - ($i % 4)); ?>
     <?php endif; ?>
-</div>
-</div>
-
-
-
-
-<div class="book-container">
-
 
 </div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

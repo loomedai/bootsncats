@@ -8,6 +8,11 @@ $userName = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
+$name_pattern = "/^[a-zA-Z ]{2,30}$/"; // Name must be 2-30 characters long and contain only letters and spaces.
+$username_pattern = "/^[a-zA-Z0-9_-]{3,20}$/"; // Username must be 3-20 characters long, and can contain letters, numbers, underscores, and hyphens.
+$email_pattern = "/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; // Email must be a valid email address.
+$password_pattern = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+\-=]{8,}$/";
+
 //check if the form is posted and the form values are not empty then run the code
 if(($_SERVER['REQUEST_METHOD'] == 'POST') && !EmptyFormValue(array($firstName,$lastName,$userName,$email,$password))) {
 

@@ -142,8 +142,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'remove') {
                             <button type="submit" name="update_quantity">Update</button>
                         </form>
                     </td>
-                    <td style="text-align:right;"><?php echo "$ ".number_format($item["Price"]*$item["quantity"], 2); ?></td>
-                    <td style="text-align:center;"><a href="cart.php?action=remove&Bid=<?php echo $item["Bid"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
+                    <td style="text-align:right;"><?php echo number_format($item["Price"]*$item["quantity"], 2). "kr"; ?></td>
+                    <td style="text-align:center;"><a href="cart.php?action=remove&Bid=<?php echo $item["Bid"]; ?>" class="btnRemoveAction"><p>Remove book</p></a></td>
                 </tr>
                 <?php
                 $total_quantity += $item["quantity"];
@@ -152,7 +152,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'remove') {
             ?>
             <tr>
                 <td colspan="2" align="right">Total:</td>
-                <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+                <td align="right"><strong><?php echo number_format($total_price, 2). "kr"; ?></strong></td>
                 <td></td>
             </tr>
             </tbody>
@@ -164,6 +164,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'remove') {
         <?php
     }
     ?>
+    <a id="btnEmpty" href="cart.php?action=empty" class="btn checkout bg-success p-1 m-2 text-white" onclick="alert('Thank you for your order!')">Check Out</a>
 </div>
 
 

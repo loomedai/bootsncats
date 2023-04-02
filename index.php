@@ -6,36 +6,42 @@ require_once 'class/booksDb.php';
 $bookshop = new booksDb(); // Create an instance of the Bookshop class
 $books = $bookshop->getBooks(); // Call the getBooks() method to retrieve data
 
-if(isset($_POST["add_to_cart"])){
-    if(isset($_SESSION["shopping_cart"])){
 
-            print_r($_POST['Bid']);
+// Check if the "add to cart" button was clicked
+if(isset($_POST['add_to_cart'])) {
+    // Get the product title, price, and quantity from the form
+    $Title = $_POST['Title'];
+    $Price = $_POST['Price'];
+    $quantity = $_POST['quantity'];
 
- /*       $book_array_id = array_column($_SESSION["shopping_cart"],"Bid");
-        if(!in_array($_GET["Bid"], $book_array_id)){
+    // Create an array with the product details
+    $product = array(
+        'Title' => $Title,
+        'Price' => $Price,
+        'quantity' => $quantity
+    );
 
-            $count = count($_SESSION["shopping_cart"]);
-            $book_array = array(
-                'Bid' => $_GET["Bid"],
-                'Title' => $_POST["hidden_title"],
-                'Price' => $_POST["hidden_price"],
-                'img' => $_POST["img"],
-            );
-            $_SESSION["shopping_cart"][$count] = $book_array;
-        }else{
-            echo '<script>Alert("Item Already Added")</script>';
-            echo '<script>window.location="login-form.php"</script>';
+    // Check if the shopping cart session already exists
+    if(isset($_SESSION['cart'])) {
+        // Check if the product already exists in the shopping cart
+        $product_exists = false;
+        foreach($_SESSION['cart'] as $key => $item) {
+            if($item['Title'] === $Title) {
+                // If the product already exists, update the quantity
+                $_SESSION['cart'][$key]['quantity'] += $quantity;
+                $product_exists = true;
+                break;
+            }
         }
 
-    }else{
-        $book_array = array(
-                'Bid' => $_GET["Bid"],
-                'Title' => $_POST["hidden_title"],
-                'Price' => $_POST["hidden_price"],
-                'img' => $_POST["img"],
-        );
-        $_SESSION["shopping_cart"][0] = $book_array;
-  */  }
+        // If the product doesn't already exist, add it to the shopping cart
+        if(!$product_exists) {
+            array_push($_SESSION['cart'], $product);
+        }
+    } else {
+        // If the shopping cart session doesn't exist, create it and add the product
+        $_SESSION['cart'] = array($product);
+    }
 }
 
 ?>
@@ -97,14 +103,16 @@ if(isset($_POST["add_to_cart"])){
         <div class="book-info" style="height: 14em;">
             <h5 class="bookTitle"><?php echo $book['Title']; ?></h5>
             <p class="bookDesc h-50 overflow-hidden"><?php echo $book['Description']; ?></p>
-           <div class="buy d-flex justify-content-between">
-               <p class="bookPrice position-absolute bottom-0 start-0 p-1 m-1"><?php echo $book['Price']; ?></p>
-               <form method="post" action="cart.php">
-                   <input type="hidden" name="hidden_title" value="<?php echo $book['Title']; ?>">
-                   <input type="hidden" name="hidden_price" value="<?php echo $book['Price']; ?>">
-                   <input type="submit" name="add_to_cart" class="btn position-absolute bottom-0 end-0 bg-success p-1 m-1 text-white" value="Add to cart">
-               </form>
-           </div>
+            <form method="post" action="cart.php">
+                <div class="buy d-flex justify-content-between">
+                    <p class="bookPrice position-absolute bottom-0 start-0 p-1 m-1"><?php echo $book['Price']; ?></p>
+                    <input type="hidden" name="Bid" value="<?php echo $book['Bid']; ?>">
+                    <input type="hidden" name="Title" value="<?php echo $book['Title']; ?>">
+                    <input type="hidden" name="Price" value="<?php echo $book['Price']; ?>">
+                    <input type="number" name="quantity" value="1" min="1" max="10">
+                    <button type="submit" name="add_to_cart" class="btn bg-success position-absolute bottom-0 end-0 p-1 m-1">Add to Cart</button>
+                </div>
+            </form>
         </div>
     </div>
     <?php $i++; ?>

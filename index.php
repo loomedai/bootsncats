@@ -9,7 +9,6 @@ $books = $bookshop->getBooks(); // Call the getBooks() method to retrieve data
 
 // Check if the "add to cart" button was clicked
 if(isset($_POST['add_to_cart'])) {
-    // Get the product title, price, and quantity from the form
     $Title = $_POST['Title'];
     $Price = $_POST['Price'];
     $quantity = $_POST['quantity'];

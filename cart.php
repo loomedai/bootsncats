@@ -103,7 +103,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'remove') {
                     </ul>
                 </li>
                 <li class="nav-item end-0">
-                    <a class="nav-link text-white" href="login-session/login-secure.php">Login</a>
+                    <a class="nav-link text-white" href="login-session/form.php">Login</a>
                 </li>
                 <li class="nav-item end-0">
                     <a class="nav-link text-white" href="cart.php">Cart</a>

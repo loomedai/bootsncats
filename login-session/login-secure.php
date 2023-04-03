@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     $username_pattern = "/^[a-zA-Z0-9_-]{3,20}$/";
-    $password_pattern = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+\-=]{8,}$/";
+    $password_pattern = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+\-=]{4,}$/";
 
     // Check if the username matches the pattern
     if (!preg_match($username_pattern, $username)) {
